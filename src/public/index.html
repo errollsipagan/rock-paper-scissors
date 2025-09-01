@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="text" id="user-id" placeholder="User ID" value=""></td>
+                <td><button id="find-match">Find Match</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="game-choices" id="game-choices">
+                        <option value="Rock">Rock</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Scissors">Scissors</option>
+                    </select>
+                </td>
+                <td>
+                    <button id="start-button">Pick</button>
+                </td>
+            </tr>
+            <tr>
+                <td>My Score: <label id="my-score">0</label></td>
+                <td>Opponent Score: <label id="opponent-score">0</label></td>
+            </tr>
+            <tr>
+                <td>Opponent Move:</td>
+                <td><label id="opponent-move"></label></td>
+            </tr>
+            <tr>
+                <td>Game Result:</td>
+                <td><label id="game-result"></label></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
