@@ -1,15 +1,15 @@
-const WebSocket = require('ws');
+import WebSocket from 'ws';
 const wss = new WebSocket.Server({ port: 8081 });
 
-const games = {};
-const users = {};
-const websockets = {};
+const games: Record<string, any> = {};
+const users: Record<string, any> = {};
+const websockets: Record<string, WebSocket> = {};
 
 wss.on('connection', (ws) => {
     console.log('Client connected!');
 
     ws.on('message', (message) => {
-        const data = JSON.parse(message);
+        const data = JSON.parse(message.toString());
         console.log('Received message:', data);
         switch (data.type) {
             case 'find-match':
@@ -112,7 +112,7 @@ wss.on('connection', (ws) => {
     });   
 });
 
-function findOpponent(userId) {
+function findOpponent(userId: string) {
     // Get a list of users who are waiting for a match
     const waitingUsers = getUsersWaitingForMatch();
 
@@ -131,7 +131,7 @@ function getUsersWaitingForMatch() {
     return _users.filter((user) => user.waitingForMatch);
 }
 
-function createGame(userId1, userId2) {
+function createGame(userId1: string, userId2: string) {
     // This function creates a new game instance with the given user IDs
     // In a real-world implementation, this data would likely be stored in a database or a data structure
     // For simplicity, let's assume we have a game object with the user IDs and a unique game ID
@@ -156,7 +156,7 @@ function createGame(userId1, userId2) {
     return game;
 }
 
-function addUserToQueue(userId) {
+function addUserToQueue(userId: string) {
     if (users[userId]) {
         users[userId].waitingForMatch = true;
     } else {
@@ -164,7 +164,7 @@ function addUserToQueue(userId) {
     }
 }
 
-function removeUserFromQueue(userId) {
+function removeUserFromQueue(userId: string) {
     if (users[userId]) {
         users[userId].waitingForMatch = false;
     }

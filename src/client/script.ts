@@ -1,14 +1,14 @@
 const socket = new WebSocket('ws://localhost:8081');
 
-const findMatchButton = document.getElementById('find-match');
-const startButton = document.getElementById('start-button');
-const userIdInput = document.getElementById('user-id');
-const gameChoicesSelect = document.getElementById('game-choices');
-const myScore = document.getElementById('my-score');
-const opponentScore = document.getElementById('opponent-score');
-const opponentMove = document.getElementById('opponent-move');
-const gameResult = document.getElementById('game-result');
-let gameId = null;
+const findMatchButton = document.getElementById('find-match') as HTMLButtonElement;
+const startButton = document.getElementById('start-button') as HTMLButtonElement;
+const userIdInput = document.getElementById('user-id') as HTMLInputElement;
+const gameChoicesSelect = document.getElementById('game-choices') as HTMLSelectElement;
+const myScore = document.getElementById('my-score') as HTMLLabelElement;
+const opponentScore = document.getElementById('opponent-score') as HTMLLabelElement;
+const opponentMove = document.getElementById('opponent-move') as HTMLLabelElement;
+const gameResult = document.getElementById('game-result') as HTMLLabelElement;
+let gameId: string| null = null;
 
 function init() {
     startButton.disabled = true;
